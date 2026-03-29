@@ -4,7 +4,7 @@ lang: tr
 
 timezone: Europe/Istanbul
 
-title: biseysoyle.me
+title: ertodebana
 
 tagline: "DevOps | Platform Engineering | AI | Cloud Native"
 
@@ -12,7 +12,7 @@ description: >-
   DevOps, Platform Engineering, Yapay Zeka ve Cloud Native teknolojileri
   hakkinda guncel yazilar, rehberler ve deneyimler.
 
-url: "https://biseysoyle.me"
+url: "https://ertodebana.github.io"
 
 github:
   username: ertodebana
