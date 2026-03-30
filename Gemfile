@@ -4,7 +4,6 @@ gem "minimal-mistakes-jekyll", "~> 4.27"
 
 group :jekyll_plugins do
   gem "jekyll-include-cache"
-  gem "jekyll-paginate"
   gem "jekyll-polyglot", "~> 1.12"
 end
 

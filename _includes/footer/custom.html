@@ -1,20 +1,29 @@
 {% assign current_lang = page.lang | default: site.active_lang | default: site.lang %}
 {% assign strings = site.data[current_lang].strings %}
+{% assign is_root_404 = page.path == "404.html" or page.url == "/404.html" %}
 <div class="footer-meta">
   <p class="language-switcher">
     <strong>{{ strings.language_label }}:</strong>
     {% for lang in site.languages %}
-      {% assign target = page.permalink_lang[lang] | default: page.url %}
-      {% if target == "/" %}
+      {% if is_root_404 %}
         {% if lang == site.default_lang %}
           {% capture lang_href %}{{ site.baseurl }}/{% endcapture %}
         {% else %}
           {% capture lang_href %}{{ site.baseurl }}/{{ lang }}/{% endcapture %}
         {% endif %}
-      {% elsif lang == site.default_lang %}
-        {% capture lang_href %}{{ site.baseurl }}{{ target }}{% endcapture %}
       {% else %}
-        {% capture lang_href %}{{ site.baseurl }}/{{ lang }}{{ target }}{% endcapture %}
+        {% assign target = page.permalink_lang[lang] | default: page.url %}
+        {% if target == "/" %}
+          {% if lang == site.default_lang %}
+            {% capture lang_href %}{{ site.baseurl }}/{% endcapture %}
+          {% else %}
+            {% capture lang_href %}{{ site.baseurl }}/{{ lang }}/{% endcapture %}
+          {% endif %}
+        {% elsif lang == site.default_lang %}
+          {% capture lang_href %}{{ site.baseurl }}{{ target }}{% endcapture %}
+        {% else %}
+          {% capture lang_href %}{{ site.baseurl }}/{{ lang }}{{ target }}{% endcapture %}
+        {% endif %}
       {% endif %}
       <a
         {% if lang == current_lang %}class="is-active"{% endif %}
