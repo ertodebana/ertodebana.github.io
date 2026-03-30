@@ -20,6 +20,7 @@ default_lang: "tr"
 parallel_localization: true
 exclude_from_localization:
   - "assets"
+  - "404.html"
   - "robots.txt"
   - "sitemap.xml"
   - "llms.txt"
