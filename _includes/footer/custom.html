@@ -1,4 +1,5 @@
-{% assign strings = site.data[site.active_lang].strings %}
+{% assign current_lang = page.lang | default: site.active_lang | default: site.lang %}
+{% assign strings = site.data[current_lang].strings %}
 <div class="footer-meta">
   <p class="language-switcher">
     <strong>{{ strings.language_label }}:</strong>
@@ -16,7 +17,7 @@
         {% capture lang_href %}{{ site.baseurl }}/{{ lang }}{{ target }}{% endcapture %}
       {% endif %}
       <a
-        {% if lang == site.active_lang %}class="is-active"{% endif %}
+        {% if lang == current_lang %}class="is-active"{% endif %}
         {% static_href %}href="{{ lang_href }}"{% endstatic_href %}
       >
         {% if lang == "tr" %}{{ strings.language_tr }}{% else %}{{ strings.language_en }}{% endif %}

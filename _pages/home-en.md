@@ -3,6 +3,7 @@ layout: home
 lang: en
 locale: en-US
 page_id: home
+permalink: /
 title: "Posts"
 description: "English articles on DevOps, platform engineering, AI, and cloud-native systems."
 classes: wide

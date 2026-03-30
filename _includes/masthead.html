@@ -1,5 +1,6 @@
 {% assign locale = include.locale | default: site.locale %}
-{% assign navigation = site.data[site.active_lang].navigation.main %}
+{% assign current_lang = page.lang | default: site.active_lang | default: site.lang %}
+{% assign navigation = site.data[current_lang].navigation.main %}
 {% capture logo_path %}{{ site.logo }}{% endcapture %}
 
 <div class="masthead">
