@@ -9,6 +9,41 @@
   display: none;
 }
 
+.layout--home .page__hero--overlay {
+  display: block;
+  min-height: 24rem;
+  margin-bottom: 2rem;
+  background-position: center 62%;
+}
+
+.layout--home .page__hero-caption {
+  padding: 0.5rem 1rem 0;
+  font-size: 0.8rem;
+}
+
+.layout--home .page__hero-caption a {
+  color: inherit;
+}
+
+.layout--home .archive {
+  margin-top: 0;
+}
+
+.layout--home .archive__item-teaser {
+  border-radius: 0.5rem;
+}
+
+.layout--home .page__content {
+  font-size: 1.05rem;
+  max-width: 44rem;
+}
+
+.layout--home .page__content p:first-child {
+  font-size: 1.25rem;
+  font-weight: 600;
+  line-height: 1.45;
+}
+
 .language-switcher,
 .llms-links {
   margin: 0.25rem 0;
