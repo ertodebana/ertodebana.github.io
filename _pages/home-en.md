@@ -13,20 +13,13 @@ header:
   caption: "Photo: [Alan Knight](https://unsplash.com/photos/snow-capped-mountains-behind-a-pine-forest-and-lake-HALGT9STqdU)"
 ---
 
-Calm, practical writing for modern infrastructure work.
+This site is about DevOps, Platform Engineering, GitOps, and AI operations. The goal is not to explain the terms for the sake of it, but to make it easier to see what actually works and what usually slows teams down.
 
-I keep this site to write about technical work without the usual amount of buzzword inflation. In DevOps, platform engineering, AI, and cloud-native systems, the same ideas are often recycled with new labels. The goal here is not to add more noise, but to make the useful distinctions clearer and more usable.
+I care more about tradeoffs than tool lists. Is Terraform the safer default, or is Pulumi the better fit? What does GitOps really improve? Where does platform engineering create real value, and where does it turn into branding? I look at those questions through maintenance cost, reliability, and day-to-day use.
 
-Some posts are direct comparisons. Is Terraform the safer default or is Pulumi the better engineering fit? What does GitOps actually improve once you are responsible for production? Is platform engineering a real operating model or just a renamed internal platform initiative? I try to answer those questions from the angle of day-to-day use, operational drag, and team behavior.
-
-Other posts are closer to implementation notes. On topics like Kubernetes security, LLM operations, internal developer platforms, and deployment workflows, I am less interested in repeating generic best-practice lists and more interested in explaining which decisions matter, why they matter, and where teams usually get surprised.
-
-This site mostly focuses on:
+Some posts are comparisons. Others are implementation notes. The common thread is simple: not theory, but technical decisions that matter in production.
 
 - Platform engineering and developer experience
-- DevOps, GitOps, and release workflows
+- DevOps, GitOps, and deployment workflows
 - Running AI and LLM systems in production
 - Kubernetes, security, and cloud-native operations
-- Team habits, tool choice, and practical architecture tradeoffs
-
-In short, this is not meant to be a glossary of trendy technical terms. It is a working set of field notes for people building and operating real systems.

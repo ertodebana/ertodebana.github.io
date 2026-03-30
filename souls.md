@@ -10,6 +10,23 @@ Use it when writing or editing:
 - CTA text
 - metadata that is visible to readers
 
+## Bilingual Sync Rule
+
+This site is bilingual. Reader-facing content should not drift between Turkish and English without a reason.
+
+When updating a localized content file:
+- update the matching counterpart in the other language in the same pass
+- keep the meaning, sharpness, and structure aligned
+- adapt the wording naturally instead of translating line by line
+
+Use `page_id` as the primary pairing key.
+
+Typical pairs:
+- [`index.html`](/home/yigit/Projects/ertodebana.github.io/index.html) <-> [`_pages/home-en.md`](/home/yigit/Projects/ertodebana.github.io/_pages/home-en.md)
+- `*_tr.md` or Turkish posts <-> matching English page/post with the same `page_id`
+
+If one side is intentionally different, that should be a deliberate choice, not drift by accident.
+
 ## Core Voice
 
 The voice should feel like a technical practitioner who has seen real production mess and prefers clarity over hype.

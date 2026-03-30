@@ -3,6 +3,9 @@
 ## Writing Voice
 For any reader-facing copy, review [`souls.md`](/home/yigit/Projects/ertodebana.github.io/souls.md) before writing. It defines the expected tone, what to avoid, and how posts on this site should sound in both Turkish and English.
 
+## Bilingual Content Rule
+This repo is maintained in Turkish and English. When you change reader-facing copy in one language, update the matching counterpart in the other language in the same pass unless the user explicitly asks to keep them different. Use `page_id` as the primary pairing key.
+
 ## Project Structure & Module Organization
 This repository is a bilingual Jekyll blog powered by the `minimal-mistakes-jekyll` theme and `jekyll-polyglot`. Core site settings live in [`_config.yml`](/home/yigit/Projects/ertodebana.github.io/_config.yml). Long-form content belongs in [`_posts/`](/home/yigit/Projects/ertodebana.github.io/_posts) using dated filenames such as `2026-03-29-topic-name.md`; Turkish and English variants are usually separate files. Static pages live in [`_pages/`](/home/yigit/Projects/ertodebana.github.io/_pages), localized navigation/data lives under [`_data/tr/`](/home/yigit/Projects/ertodebana.github.io/_data/tr) and [`_data/en/`](/home/yigit/Projects/ertodebana.github.io/_data/en), and theme overrides live in [`_includes/`](/home/yigit/Projects/ertodebana.github.io/_includes). The Turkish landing page is still rooted at [`index.html`](/home/yigit/Projects/ertodebana.github.io/index.html), while the English landing page lives in [`_pages/home-en.md`](/home/yigit/Projects/ertodebana.github.io/_pages/home-en.md). GitHub Pages deployment is defined in [`.github/workflows/pages-deploy.yml`](/home/yigit/Projects/ertodebana.github.io/.github/workflows/pages-deploy.yml).
 
