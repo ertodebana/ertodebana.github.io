@@ -7,10 +7,12 @@ page_id: gitops
 permalink: /posts/gitops-nedir-ve-neden-kullanmaliyiz/
 categories: [DevOps, GitOps]
 tags: [gitops, argocd, flux, kubernetes, ci-cd]
-description: "GitOps yaklaşımının temellerini, avantajlarını ve popüler araçlarını inceliyoruz."
+description: "GitOps'u moda bir etiket olarak değil, production'da dağınıklığı azaltan bir çalışma disiplini olarak ele alıyorum."
 ---
 
 ## GitOps Nedir?
+
+GitOps'u çoğu zaman fazla romantize edilmiş bir kavram olarak anlatıyoruz. Oysa pratikte mesele daha basit: production'a kimsenin el yordamıyla dokunmaması ve sistemin "hangi commit doğruysa ona dönmesi". Benim için GitOps'un değeri burada başlıyor.
 
 GitOps, **Git deposunu tek doğru kaynak (single source of truth)** olarak kullanan operasyonel bir yaklaşımdır. Altyapı ve uygulama tanımları Git'te tutulur, değişiklikler gözden geçirilir ve küme üzerindeki gerçek durum otomatik olarak bu tanımlarla hizalanır.
 
@@ -82,4 +84,6 @@ argocd app create my-app \
 
 ## Sonuç
 
-GitOps, özellikle Kubernetes kullanan ekiplerde altyapı yönetimini daha öngörülebilir hâle getirir. Ekip büyüdükçe ve ortam karmaşıklaştıkça bu yaklaşımın değeri daha net görülür.
+GitOps sihir değildir; kötü YAML'ı iyi yapmaz, zayıf operasyon kültürünü tek başına düzeltmez. Ama ekibiniz hâlâ production değişikliklerini Slack mesajı ve `kubectl edit` ile yürütüyorsa, toparlanmak için en güçlü adımlardan biridir.
+
+Özellikle Kubernetes kullanan ekiplerde GitOps, "kim ne yaptı?" tartışmasını azaltır ve sistemi tekrar tahmin edilebilir hâle getirir. Bence asıl kazanç da tam olarak bu.

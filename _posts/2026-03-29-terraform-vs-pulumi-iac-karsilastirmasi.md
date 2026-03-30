@@ -7,12 +7,16 @@ page_id: terraform-vs-pulumi
 permalink: /posts/terraform-vs-pulumi-iac-karsilastirmasi/
 categories: [DevOps, Infrastructure]
 tags: [terraform, pulumi, iac, infrastructure-as-code, cloud]
-description: "Terraform ve Pulumi'yi karşılaştırarak hangi aracın hangi senaryoda daha uygun olduğunu inceliyoruz."
+description: "Terraform ve Pulumi tartışmasını teori üzerinden değil, ekip yapısı ve günlük kullanım farkları üzerinden değerlendiriyorum."
 ---
 
 ## Infrastructure as Code Neden Önemli?
 
+Terraform vs Pulumi karşılaştırması çoğu zaman "hangi araç daha iyi?" diye soruluyor. Bence daha doğru soru şu: ekibiniz hangi çalışma biçiminde daha az sürtünmeyle ilerliyor?
+
 Altyapıyı kod olarak yönetmek, modern operasyon ekiplerinin temel yeteneklerinden biridir. Bu yaklaşım, tekrar edilebilirlik, gözden geçirilebilirlik ve otomasyon sağlar. Bugün en sık karşılaştırılan iki araç ise **Terraform** ve **Pulumi**.
+
+Kısa cevabım şöyle: varsayılan seçim olarak Terraform hâlâ daha güvenli; ama ekip güçlü yazılım mühendisliği alışkanlıklarıyla çalışıyorsa Pulumi daha üretken olabilir.
 
 ## Genel Bakış
 
@@ -149,4 +153,6 @@ tofu apply
 
 ## Sonuç
 
-Her iki araç da güçlüdür. Seçim, ekip yetkinliği, mevcut ekosistem ve ihtiyaç duyduğunuz esneklik seviyesine göre yapılmalıdır. Standartlaşma istiyorsanız Terraform, programlama dili gücünü altyapıya taşımak istiyorsanız Pulumi daha uygun olabilir.
+İki araç da güçlü, ama aynı takım için her zaman eşit derecede uygun değiller. Ekibiniz standartlaşma, geniş provider desteği ve düşük sürpriz istiyorsa Terraform çoğu zaman daha sağlam seçimdir.
+
+Pulumi ise "altyapı da sonuçta yazılım" diyen ekiplerde gerçekten hız kazandırabilir. Yine de bu esneklik, disiplin yoksa hızlıca karmaşıklığa dönüşür. Bu yüzden ben seçimi araç fanatizmiyle değil, ekip davranışıyla yapmayı daha doğru buluyorum.

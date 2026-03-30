@@ -7,10 +7,12 @@ page_id: platform-engineering-idp
 permalink: /posts/platform-engineering-ve-internal-developer-platform/
 categories: [Platform Engineering]
 tags: [platform-engineering, idp, backstage, developer-experience, self-service]
-description: "Platform Engineering nedir, IDP nasıl kurulur ve developer experience nasıl iyileştirilir?"
+description: "Platform Engineering'i yeni bir buzzword olarak değil, geliştirici darboğazlarını gerçekten azaltan bir ürün yaklaşımı olarak ele alıyorum."
 ---
 
 ## Platform Engineering Nedir?
+
+Platform Engineering son birkaç yılda o kadar sık tekrarlandı ki anlamı kolayca boşalabiliyor. Bana göre en kısa tanım şu: geliştiricilerin her küçük ihtiyaç için platform ya da operasyon ekibine bilet açmak zorunda kalmamasını sağlamak.
 
 Platform Engineering, geliştiricilerin self-service olarak altyapı kaynaklarına erişebildiği platformları tasarlama ve işletme disiplinidir. Temel amaç, ekiplerin bilişsel yükünü azaltmak ve teslimat hızını artırmaktır.
 
@@ -115,4 +117,6 @@ spec:
 
 ## Sonuç
 
-Platform Engineering, DevOps'un yerine geçen değil, onu ölçekleyen bir yaklaşımdır. Organizasyon büyüdükçe ortak standartları, güvenliği ve geliştirici deneyimini merkezi bir platform üzerinden sunmak daha değerli hâle gelir.
+Platform Engineering'i başarılı yapan şey süslü portal ekranları değil, geliştiricinin her gün yaşadığı sürtünmeyi gerçekten azaltmasıdır. Eğer platform ekibi sadece yeni soyutlamalar üretip eski darboğazları koruyorsa, orada ürün değil bürokrasi vardır.
+
+Doğru kurulduğunda ise bu yaklaşım DevOps'u öldürmez; onu ölçekler. Organizasyon büyüdükçe ortak standartları, güvenliği ve geliştirici deneyimini merkezi ama kullanılabilir bir iç ürün üzerinden sunmak çok daha değerli hâle gelir.

@@ -7,10 +7,12 @@ page_id: kubernetes-security
 permalink: /posts/kubernetes-security-best-practices/
 categories: [DevOps, Security]
 tags: [kubernetes, security, rbac, network-policy, pod-security]
-description: "Kubernetes cluster'larınızı güvenli hâle getirmek için uygulamanız gereken temel pratikler."
+description: "Kubernetes güvenliğini varsayılan ayarlara bırakmanın neden kötü bir fikir olduğunu ve hangi kontrollerin gerçekten fark yarattığını anlatıyorum."
 ---
 
 ## Kubernetes Güvenliği Neden Önemli?
+
+Kubernetes'in en tehlikeli tarafı, ilk bakışta "zaten enterprise-grade" görünmesidir. Oysa varsayılan kurulumların büyük kısmı güvenli değil; sadece henüz başınıza bir şey gelmemiş olabilir.
 
 Kubernetes, varsayılan ayarlarıyla güvenli kabul edilmemelidir. Üretim ortamında çalışan kümelerde kimlik, ağ, imaj, secret ve çalışma zamanı güvenliği birlikte düşünülmelidir.
 
@@ -200,4 +202,6 @@ spec:
 
 ## Sonuç
 
-Kubernetes güvenliği tek bir ayarla sağlanmaz. Kimlik, ağ, imaj ve çalışma zamanı kontrolleri birlikte uygulandığında küme çok daha dayanıklı bir hâle gelir.
+Kubernetes güvenliği tek bir YAML veya tek bir policy ile çözülmez. RBAC'i bırakıp sadece image scan yapmak ya da NetworkPolicy yazıp secret yönetimini boş vermek yarım güvenlik üretir.
+
+Benim gördüğüm pratik yaklaşım şu: önce en bariz açıkları kapatın, sonra cluster'ı katman katman sertleştirin. Kimlik, ağ, imaj ve çalışma zamanı kontrolleri birlikte uygulandığında küme gerçekten daha dayanıklı hâle gelir.

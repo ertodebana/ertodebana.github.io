@@ -7,10 +7,12 @@ page_id: kubernetes-security
 permalink: /posts/kubernetes-security-best-practices/
 categories: [DevOps, Security]
 tags: [kubernetes, security, rbac, network-policy, pod-security]
-description: "The core practices you should apply to harden Kubernetes clusters."
+description: "A practical security baseline for Kubernetes, with emphasis on the controls that matter in real clusters."
 ---
 
 ## Why Kubernetes Security Needs Intentional Work
+
+One of the most misleading things about Kubernetes is how "enterprise" it feels on day one. That visual confidence hides the fact that many default setups are only secure until someone actually pushes on them.
 
 Kubernetes is not secure just because it is production-grade. Real-world hardening requires identity controls, workload restrictions, network isolation, image policy, and secrets management to work together.
 
@@ -200,4 +202,6 @@ spec:
 
 ## Conclusion
 
-Kubernetes security is a layered discipline. Identity, workload, network, image, and secret controls reinforce each other. Relying on only one of them leaves large gaps.
+Kubernetes security does not come from one policy, one scanner, or one admission controller. If you lock down images but leave identity wide open, or write NetworkPolicies while secrets are handled casually, you are still operating with gaps.
+
+The practical path is layered hardening: close the obvious holes first, then make identity, network, image, and runtime controls reinforce each other. That is what turns a cluster from "probably fine" into something you can trust.
