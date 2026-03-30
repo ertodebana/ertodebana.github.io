@@ -27,7 +27,7 @@ exclude_from_localization:
   - "llms-full.txt"
 
 logo:
-masthead_title: "ertodebana"
+masthead_title: "Yiğit Demiralp"
 breadcrumbs: false
 search: false
 atom_feed:
@@ -39,24 +39,31 @@ github:
 
 social:
   type: Person
-  name: Ertodebana
+  name: Yiğit Demiralp
   links:
     - "https://github.com/ertodebana"
+    - "https://linkedin.com/in/yigitdemiralp"
 
 author:
-  name: "Ertodebana"
+  name: "Yiğit Demiralp"
   bio: "DevOps, platform engineering, AI ve cloud-native sistemler üzerine notlar."
   location: "Türkiye"
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/ertodebana"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/yigitdemiralp"
 
 footer:
   links:
     - label: "GitHub"
       icon: "fab fa-fw fa-github"
       url: "https://github.com/ertodebana"
+    - label: "LinkedIn"
+      icon: "fab fa-fw fa-linkedin"
+      url: "https://linkedin.com/in/yigitdemiralp"
   since: "2026"
 
 include:
