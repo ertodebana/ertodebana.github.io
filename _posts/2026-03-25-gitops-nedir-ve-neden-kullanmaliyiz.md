@@ -1,19 +1,24 @@
 ---
-title: "GitOps Nedir ve Neden Kullanmaliyiz?"
+title: "GitOps Nedir ve Neden Kullanmalıyız?"
 date: 2026-03-25 10:00:00 +0300
+lang: tr
+locale: tr-TR
+page_id: gitops
+permalink: /posts/gitops-nedir-ve-neden-kullanmaliyiz/
 categories: [DevOps, GitOps]
 tags: [gitops, argocd, flux, kubernetes, ci-cd]
-description: "GitOps yaklasiminin temellerini, avantajlarini ve popüler araclari inceliyoruz."
+description: "GitOps yaklaşımının temellerini, avantajlarını ve popüler araçlarını inceliyoruz."
 ---
 
 ## GitOps Nedir?
 
-GitOps, **Git repository'sini tek dogru kaynak (single source of truth)** olarak kullanan bir operasyonel framework'tur. Tum altyapi ve uygulama konfigurasyonlari Git'te tutulur ve degisiklikler otomatik olarak cluster'a uygulanir.
+GitOps, **Git deposunu tek doğru kaynak (single source of truth)** olarak kullanan operasyonel bir yaklaşımdır. Altyapı ve uygulama tanımları Git'te tutulur, değişiklikler gözden geçirilir ve küme üzerindeki gerçek durum otomatik olarak bu tanımlarla hizalanır.
 
 ## Temel Prensipler
 
-### 1. Declarative Configuration
-Tum sistem durumu deklaratif olarak tanimlanir:
+### 1. Deklaratif yapılandırma
+
+Sistemin hedef durumu açık biçimde tanımlanır:
 
 ```yaml
 apiVersion: apps/v1
@@ -32,31 +37,34 @@ spec:
           image: myapp:v1.2.3
 ```
 
-### 2. Git as Single Source of Truth
-Her degisiklik Git uzerinden yapilir. Manuel mudahale yoktur. Bu sayede:
-- **Audit trail**: Kim, ne zaman, ne degistirdi?
-- **Rollback**: Herhangi bir onceki duruma donmek `git revert` kadar kolay
-- **Code review**: Altyapi degisiklikleri de PR sureci ile incelenir
+### 2. Git tek doğru kaynak olur
 
-### 3. Automated Reconciliation
-Bir GitOps operatoru (ArgoCD, Flux) surekli olarak Git'teki istenen durum ile cluster'daki gercek durumu karsilastirir ve farkliliklari otomatik olarak giderir.
+Her değişiklik Git üzerinden ilerler. Manuel müdahale en aza iner. Bunun sonucu olarak:
 
-## Populer GitOps Araclari
+- **Audit trail**: Kim, ne zaman, neyi değiştirdi sorusu yanıtlanabilir.
+- **Rollback**: Önceki duruma dönmek bir commit geri almak kadar kolaylaşır.
+- **Code review**: Altyapı değişiklikleri de uygulama kodu gibi incelenir.
 
-| Arac | Ozellik | Kullanim Alani |
-|------|---------|----------------|
-| **ArgoCD** | Web UI, multi-cluster | Buyuk ekipler |
-| **Flux** | Lightweight, Git-native | Kubernetes-first |
-| **Jenkins X** | CI/CD entegrasyonu | End-to-end pipeline |
+### 3. Otomatik uzlaştırma
 
-## ArgoCD ile Basit Bir Ornek
+Bir GitOps operatörü, Git'teki istenen durum ile kümedeki gerçek durumu sürekli karşılaştırır. Fark oluştuğunda sistemi tekrar hedef duruma getirir. Bu görev için en yaygın araçlar Argo CD ve Flux'tır.
+
+## Popüler GitOps Araçları
+
+| Araç | Öne çıkan özellik | Uygun senaryo |
+|------|-------------------|---------------|
+| **Argo CD** | Güçlü arayüz, çoklu küme desteği | Daha büyük ekipler |
+| **Flux** | Daha hafif, Git merkezli yaklaşım | Kubernetes odaklı platformlar |
+| **Jenkins X** | CI/CD ile daha sıkı entegrasyon | Uçtan uca teslimat zinciri |
+
+## Argo CD ile Basit Bir Örnek
 
 ```bash
-# ArgoCD kurulumu
+# Argo CD kurulumu
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/stable/manifests/install.yaml
 
-# Application tanimlama
+# Application tanımlama
 argocd app create my-app \
   --repo https://github.com/org/my-app.git \
   --path k8s \
@@ -66,14 +74,12 @@ argocd app create my-app \
 
 ## Neden GitOps?
 
-1. **Guvenilirlik**: Manuel hatalari ortadan kaldirir
-2. **Hiz**: Deployment surecleri otomatik ve hizli
-3. **Geri donulebilirlik**: Her degisiklik izlenebilir ve geri alinabilir
-4. **Guvenlik**: Cluster'a dogrudan erisim gerekmiyor
-5. **Isbirligi**: Altyapi degisiklikleri de PR surecinden gecer
+1. **Güvenilirlik**: Manuel hataları azaltır.
+2. **Hız**: Teslimat sürecini standartlaştırır ve otomatikleştirir.
+3. **Geri alınabilirlik**: Her değişiklik kayıt altındadır.
+4. **Güvenlik**: Doğrudan küme erişimi ihtiyacını azaltır.
+5. **İş birliği**: Operasyonel değişiklikler de PR sürecinden geçer.
 
-## Sonuc
+## Sonuç
 
-GitOps, modern Kubernetes ortamlarinda altyapi yonetimini kolaylastiran guclu bir yaklasimdir. Ozellikle buyuyen ekipler ve karmasik altyapilara sahip organizasyonlar icin vazgecilmez bir pratiktir.
-
-Bir sonraki yazida **ArgoCD ile multi-cluster GitOps** konusunu detayli inceleyecegiz.
+GitOps, özellikle Kubernetes kullanan ekiplerde altyapı yönetimini daha öngörülebilir hâle getirir. Ekip büyüdükçe ve ortam karmaşıklaştıkça bu yaklaşımın değeri daha net görülür.

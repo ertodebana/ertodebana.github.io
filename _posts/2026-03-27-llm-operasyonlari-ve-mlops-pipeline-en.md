@@ -1,20 +1,20 @@
 ---
-title: "LLM Operasyonları ve MLOps Pipeline Tasarımı"
+title: "LLM Operations and MLOps Pipeline Design"
 date: 2026-03-27 10:00:00 +0300
-lang: tr
-locale: tr-TR
+lang: en
+locale: en-US
 page_id: llmops-pipeline
-permalink: /posts/llm-operasyonlari-ve-mlops-pipeline/
+permalink: /posts/llm-operations-and-mlops-pipeline-design/
 categories: [AI, MLOps]
 tags: [llm, mlops, ai, machine-learning, llmops, kubernetes]
-description: "Büyük dil modellerini production'a taşımak için MLOps pipeline tasarımı ve best practice'ler."
+description: "How to design an MLOps pipeline for large language models in production."
 ---
 
-## LLM'leri Production'a Taşımak
+## Moving LLMs Into Production
 
-Büyük dil modelleriyle prototip çıkarmak ile onları **güvenilir, gözlemlenebilir ve maliyet kontrollü** biçimde üretime almak aynı şey değildir. LLMOps tarafında model yaşam döngüsü, serving altyapısı, prompt yönetimi ve maliyet optimizasyonu birlikte ele alınmalıdır.
+Building an LLM demo and operating an LLM service in production are very different jobs. In production you need reliability, observability, cost control, model lifecycle management, and prompt governance all at once.
 
-## LLMOps Pipeline Mimarisi
+## A Practical LLMOps Architecture
 
 ```
 +------------------+     +------------------+     +------------------+
@@ -32,17 +32,17 @@ Büyük dil modelleriyle prototip çıkarmak ile onları **güvenilir, gözlemle
 +------------------------------------------------------------------+
 ```
 
-## Model Serving: vLLM ile Yüksek Performans
+## High-Performance Serving with vLLM
 
-[vLLM](https://github.com/vllm-project/vllm), LLM inference için optimize edilmiş popüler bir serving framework'üdür:
+[vLLM](https://github.com/vllm-project/vllm) has become one of the most common ways to serve open-weight LLMs efficiently:
 
 ```python
 from vllm import LLM, SamplingParams
 
-# Model yükleme
+# Load the model
 llm = LLM(
     model="meta-llama/Llama-3-8B-Instruct",
-    tensor_parallel_size=2,  # 2 GPU
+    tensor_parallel_size=2,  # 2 GPUs
     gpu_memory_utilization=0.9,
     max_model_len=4096,
 )
@@ -55,12 +55,12 @@ sampling_params = SamplingParams(
 )
 
 outputs = llm.generate(
-    ["Kubernetes nedir ve neden kullanılır?"],
+    ["What is Kubernetes and why is it used?"],
     sampling_params,
 )
 ```
 
-## Kubernetes Üzerinde LLM Deployment
+## Deploying LLM Serving on Kubernetes
 
 ```yaml
 apiVersion: apps/v1
@@ -114,19 +114,19 @@ spec:
   type: ClusterIP
 ```
 
-## Monitoring ve Observability
+## Monitoring and Observability
 
-LLM serving için izlenmesi gereken temel metrikler:
+These are some of the most useful production metrics for LLM serving:
 
-| Metrik | Açıklama | Hedef |
-|--------|----------|-------|
+| Metric | Meaning | Target |
+|--------|---------|--------|
 | **TTFT** | Time to First Token | < 500ms |
 | **TPS** | Tokens Per Second | > 30 |
-| **P99 Latency** | 99. yüzdelik gecikme | < 5s |
-| **GPU Utilization** | GPU kullanım oranı | %70-%90 |
-| **Cost per Token** | Token başına maliyet | Minimize |
+| **P99 Latency** | 99th percentile latency | < 5s |
+| **GPU Utilization** | GPU usage | 70%-90% |
+| **Cost per Token** | Cost efficiency | Minimize |
 
-### Prometheus ile metrik toplama
+### Collecting metrics with Prometheus
 
 ```yaml
 # prometheus-rules.yaml
@@ -150,9 +150,9 @@ groups:
           summary: "LLM throughput is critically low"
 ```
 
-## Prompt Yönetimi
+## Prompt Management Matters Too
 
-Production ortamında prompt'ları da versiyonlamak gerekir:
+Prompt changes should be versioned just like code and models:
 
 ```python
 # prompt_registry.py
@@ -173,17 +173,17 @@ class PromptTemplate:
     def hash(self) -> str:
         return hashlib.sha256(self.template.encode()).hexdigest()[:8]
 
-# Prompt versiyonlama
+# Prompt versioning
 PROMPTS = {
     "summarize_v2": PromptTemplate(
         name="summarize",
         version="2.0",
-        template="""Sen bir özetleme asistanısın.
-Aşağıdaki metni 3 cümle ile özetle:
+        template="""You are a summarization assistant.
+Summarize the following text in 3 sentences:
 
 {text}
 
-Özet:""",
+Summary:""",
         model="llama-3-8b-instruct",
         max_tokens=256,
         temperature=0.3,
@@ -191,15 +191,15 @@ Aşağıdaki metni 3 cümle ile özetle:
 }
 ```
 
-## Best practice'ler
+## Good Production Defaults
 
-1. **Model versiyonlama** yapın ve her değişikliği izleyin.
-2. **A/B testing** ile yeni modelleri kademeli devreye alın.
-3. **Rate limiting** ve kota yönetimi ekleyin.
-4. **Caching** ile tekrar eden sorguların maliyetini düşürün.
-5. **Fallback stratejileri** tanımlayın.
-6. **Maliyet takibini** token bazında görünür kılın.
+1. **Version models explicitly** and track every release.
+2. **Roll out gradually** with A/B tests or canaries.
+3. **Enforce rate limits** and quota controls.
+4. **Cache repeated requests** where it is safe.
+5. **Define fallback behavior** for degraded service states.
+6. **Track spend per token** so cost becomes operationally visible.
 
-## Sonuç
+## Conclusion
 
-LLM'leri production'a taşımak, klasik makine öğrenmesi servislerinden daha geniş bir operasyonel yüzey alanı yaratır. Doğru pipeline, doğru gözlemleme ve doğru maliyet kontrolleriyle bu karmaşıklık yönetilebilir hâle gelir.
+Operating LLMs in production requires a broader discipline than traditional model deployment. Once serving, prompts, telemetry, and cost controls are treated as first-class concerns, the system becomes much easier to run safely.

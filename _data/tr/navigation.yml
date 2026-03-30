@@ -1,0 +1,11 @@
+main:
+  - title: "Yazılar"
+    url: /
+  - title: "Arşiv"
+    url: /arsiv/
+  - title: "Kategoriler"
+    url: /kategoriler/
+  - title: "Etiketler"
+    url: /etiketler/
+  - title: "Hakkında"
+    url: /hakkinda/

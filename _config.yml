@@ -1,51 +1,91 @@
-theme: jekyll-theme-chirpy
+theme: "minimal-mistakes-jekyll"
+minimal_mistakes_skin: "air"
 
+locale: "tr-TR"
 lang: tr
-
 timezone: Europe/Istanbul
 
-title: ertodebana
-
-tagline: "DevOps | Platform Engineering | AI | Cloud Native"
-
+title: "ertodebana"
+title_separator: "·"
+subtitle: "Platform Engineering · DevOps · AI"
 description: >-
-  DevOps, Platform Engineering, Yapay Zeka ve Cloud Native teknolojileri
-  hakkinda guncel yazilar, rehberler ve deneyimler.
-
+  Platform engineering, DevOps, yapay zeka ve cloud-native pratikleri
+  üzerine teknik yazılar ve rehberler.
 url: "https://ertodebana.github.io"
+baseurl: ""
+repository: "ertodebana/ertodebana.github.io"
+
+languages: ["tr", "en"]
+default_lang: "tr"
+parallel_localization: true
+exclude_from_localization:
+  - "assets"
+  - "robots.txt"
+  - "sitemap.xml"
+  - "llms.txt"
+  - "llms-full.txt"
+
+logo:
+masthead_title: "ertodebana"
+breadcrumbs: false
+search: false
+atom_feed:
+  hide: true
+words_per_minute: 220
 
 github:
   username: ertodebana
 
 social:
+  type: Person
   name: Ertodebana
-  email: ""
   links:
-    - https://github.com/ertodebana
+    - "https://github.com/ertodebana"
 
-theme_mode: # [light | dark]
+author:
+  name: "Ertodebana"
+  bio: "DevOps, platform engineering, AI ve cloud-native sistemler üzerine notlar."
+  location: "Türkiye"
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ertodebana"
 
-# Self-hosted static assets, optional › https://github.com/cotes2020/chirpy-static-assets
-assets:
-  self_host:
-    enabled: false
+footer:
+  links:
+    - label: "GitHub"
+      icon: "fab fa-fw fa-github"
+      url: "https://github.com/ertodebana"
+  since: "2026"
 
-avatar: ""
+include:
+  - _pages
 
-toc: true
+exclude:
+  - "*.gem"
+  - "*.gemspec"
+  - .bundle
+  - .jekyll-cache
+  - .jekyll-metadata
+  - .sass-cache
+  - vendor
+  - docs
+  - tools
+  - README.md
+  - LICENSE
+  - package*.json
+  - node_modules
+  - _tabs
 
-disqus:
-  comments: false
-
-google_analytics:
-  id: ""
-
-paginate: 10
-
-# ------------ The following options are not recommended to be modified ------------------
+encoding: "utf-8"
+markdown: kramdown
+highlighter: rouge
+permalink: pretty
+paginate: 6
+paginate_path: /page:num/
 
 kramdown:
-  footnote_backlink: "&#8617;&#xfe0e;"
+  input: GFM
   syntax_highlighter: rouge
   syntax_highlighter_opts:
     css_class: highlight
@@ -55,29 +95,22 @@ kramdown:
       line_numbers: true
       start_line: 1
 
-collections:
-  tabs:
-    output: true
-    sort_by: order
-
-defaults:
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: post
-      comments: true
-      toc: true
-      permalink: /posts/:title/
-  - scope:
-      path: _tabs
-      type: tabs
-    values:
-      layout: page
-      permalink: /:title/
-
 sass:
   style: compressed
+  sourcemap: never
+
+plugins:
+  - jekyll-paginate
+  - jekyll-include-cache
+  - jekyll-polyglot
+
+category_archive:
+  type: liquid
+  path: /kategoriler/
+
+tag_archive:
+  type: liquid
+  path: /etiketler/
 
 compress_html:
   clippings: all
@@ -88,21 +121,23 @@ compress_html:
   ignore:
     envs: [development]
 
-exclude:
-  - "*.gem"
-  - "*.gemspec"
-  - docs
-  - tools
-  - README.md
-  - LICENSE
-  - "*.config.js"
-  - package*.json
-
-jekyll-archives:
-  enabled: [categories, tags]
-  layouts:
-    category: category
-    tag: tag
-  permalinks:
-    tag: /tags/:name/
-    category: /categories/:name/
+defaults:
+  - scope:
+      path: ""
+      type: posts
+    values:
+      layout: single
+      author_profile: true
+      read_time: true
+      show_date: true
+      share: false
+      related: false
+      comments: false
+      toc: true
+      classes: wide
+  - scope:
+      path: "_pages"
+      type: pages
+    values:
+      layout: single
+      author_profile: false

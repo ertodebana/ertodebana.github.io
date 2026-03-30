@@ -1,22 +1,22 @@
 ---
 title: "Kubernetes Security Best Practices"
 date: 2026-03-28 10:00:00 +0300
-lang: tr
-locale: tr-TR
+lang: en
+locale: en-US
 page_id: kubernetes-security
 permalink: /posts/kubernetes-security-best-practices/
 categories: [DevOps, Security]
 tags: [kubernetes, security, rbac, network-policy, pod-security]
-description: "Kubernetes cluster'larınızı güvenli hâle getirmek için uygulamanız gereken temel pratikler."
+description: "The core practices you should apply to harden Kubernetes clusters."
 ---
 
-## Kubernetes Güvenliği Neden Önemli?
+## Why Kubernetes Security Needs Intentional Work
 
-Kubernetes, varsayılan ayarlarıyla güvenli kabul edilmemelidir. Üretim ortamında çalışan kümelerde kimlik, ağ, imaj, secret ve çalışma zamanı güvenliği birlikte düşünülmelidir.
+Kubernetes is not secure just because it is production-grade. Real-world hardening requires identity controls, workload restrictions, network isolation, image policy, and secrets management to work together.
 
-## 1. RBAC ile minimum yetki
+## 1. Enforce least privilege with RBAC
 
-Her kullanıcı ve servis hesabı için minimum yetki prensibini uygulayın:
+Every user and service account should get only the permissions it actually needs:
 
 ```yaml
 # read-only-role.yaml
@@ -45,9 +45,9 @@ roleRef:
   apiGroup: rbac.authorization.k8s.io
 ```
 
-## 2. Pod Security Standards
+## 2. Use Pod Security Standards
 
-Ad alanı seviyesinde güvenlik politikalarını zorunlu kılın:
+Apply namespace-level enforcement so unsafe workloads are blocked early:
 
 ```yaml
 # restricted-namespace.yaml
@@ -61,7 +61,7 @@ metadata:
     pod-security.kubernetes.io/warn: restricted
 ```
 
-Güvenli bir Pod örneği:
+Example of a more secure Pod:
 
 ```yaml
 apiVersion: v1
@@ -93,9 +93,9 @@ spec:
           cpu: "250m"
 ```
 
-## 3. Network Policy ile varsayılan reddetme
+## 3. Default-deny with NetworkPolicy
 
-Önce tüm trafiği kapatıp sonra gereken erişimi açmak daha güvenlidir:
+Start by blocking traffic, then open only what is required:
 
 ```yaml
 # default-deny.yaml
@@ -132,12 +132,12 @@ spec:
           port: 8080
 ```
 
-## 4. İmaj güvenliği
+## 4. Secure the image supply chain
 
-İmzalı, taranmış ve sabit digest ile kullanılan imajlar tercih edilmelidir:
+Prefer signed images, fixed digests, and policy enforcement:
 
 ```yaml
-# Kyverno ile image policy
+# Kyverno image policy
 apiVersion: kyverno.io/v1
 kind: ClusterPolicy
 metadata:
@@ -163,9 +163,9 @@ spec:
                       -----END PUBLIC KEY-----
 ```
 
-## 5. Secret yönetimi
+## 5. Manage secrets outside the cluster
 
-Kubernetes Secret nesneleri yalnızca base64 encoded'dir; asıl güvenlik için harici secret yönetimi gerekir:
+Kubernetes Secrets are base64-encoded objects, not a complete secrets strategy. External systems such as Vault or cloud secrets managers are safer:
 
 ```yaml
 # External Secrets Operator
@@ -187,17 +187,17 @@ spec:
         property: password
 ```
 
-## Kontrol listesi
+## Security checklist
 
-- [ ] RBAC ile minimum yetki
-- [ ] Pod Security Standards seviyeleri
-- [ ] NetworkPolicy ile default deny
-- [ ] İmaj signing ve scanning
-- [ ] Secret'lar için harici yönetim
+- [ ] Least privilege with RBAC
+- [ ] Pod Security Standards enforcement
+- [ ] Default-deny network policies
+- [ ] Image signing and scanning
+- [ ] External secrets management
 - [ ] Audit logging
-- [ ] Kaynak limitleri
-- [ ] Düzenli güvenlik taramaları
+- [ ] Resource limits
+- [ ] Regular cluster security scans
 
-## Sonuç
+## Conclusion
 
-Kubernetes güvenliği tek bir ayarla sağlanmaz. Kimlik, ağ, imaj ve çalışma zamanı kontrolleri birlikte uygulandığında küme çok daha dayanıklı bir hâle gelir.
+Kubernetes security is a layered discipline. Identity, workload, network, image, and secret controls reinforce each other. Relying on only one of them leaves large gaps.

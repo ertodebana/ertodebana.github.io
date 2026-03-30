@@ -1,0 +1,30 @@
+---
+layout: null
+---
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
+{% assign page_nodes = site.pages | where_exp: "node", "node.sitemap != false" %}
+{% assign post_nodes = site.posts %}
+{% assign all_nodes = page_nodes | concat: post_nodes %}
+{% assign included_paths = "404.html,feed.xml" | split: "," %}
+{% for node in all_nodes %}
+  {% unless site.exclude_from_localization contains node.path or included_paths contains node.path %}
+    {% if node.url %}
+      <url>
+        <loc>{{ node.url | absolute_url }}</loc>
+        {% if node.date %}
+          <lastmod>{{ node.date | date: "%Y-%m-%dT%H:%M:%S%:z" }}</lastmod>
+        {% endif %}
+        {% if node.permalink_lang %}
+          {% for lang in site.languages %}
+            {% if node.permalink_lang[lang] %}
+              <xhtml:link rel="alternate" hreflang="{{ lang }}" href="{% if lang == site.default_lang %}{{ node.permalink_lang[lang] | absolute_url }}{% else %}{{ node.permalink_lang[lang] | prepend: lang | prepend: '/' | absolute_url }}{% endif %}"/>
+            {% endif %}
+          {% endfor %}
+          <xhtml:link rel="alternate" hreflang="x-default" href="{{ node.permalink_lang[site.default_lang] | absolute_url }}"/>
+        {% endif %}
+      </url>
+    {% endif %}
+  {% endunless %}
+{% endfor %}
+</urlset>

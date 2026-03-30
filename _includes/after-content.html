@@ -1,0 +1,5 @@
+{% if page.rendered_lang and page.rendered_lang != site.active_lang %}
+  <div class="translation-notice">
+    {{ site.data[site.active_lang].strings.translation_notice }}
+  </div>
+{% endif %}

@@ -1,30 +1,30 @@
 ---
-title: "Terraform vs Pulumi: IaC Araçlarının Karşılaştırması"
+title: "Terraform vs Pulumi: Comparing IaC Tools"
 date: 2026-03-29 10:00:00 +0300
-lang: tr
-locale: tr-TR
+lang: en
+locale: en-US
 page_id: terraform-vs-pulumi
-permalink: /posts/terraform-vs-pulumi-iac-karsilastirmasi/
+permalink: /posts/terraform-vs-pulumi-comparing-iac-tools/
 categories: [DevOps, Infrastructure]
 tags: [terraform, pulumi, iac, infrastructure-as-code, cloud]
-description: "Terraform ve Pulumi'yi karşılaştırarak hangi aracın hangi senaryoda daha uygun olduğunu inceliyoruz."
+description: "A comparison of Terraform and Pulumi, and where each one fits best."
 ---
 
-## Infrastructure as Code Neden Önemli?
+## Why Infrastructure as Code Matters
 
-Altyapıyı kod olarak yönetmek, modern operasyon ekiplerinin temel yeteneklerinden biridir. Bu yaklaşım, tekrar edilebilirlik, gözden geçirilebilirlik ve otomasyon sağlar. Bugün en sık karşılaştırılan iki araç ise **Terraform** ve **Pulumi**.
+Infrastructure as Code gives teams repeatability, reviewability, and automation. Instead of relying on manual changes, infrastructure can be described, versioned, and promoted through the same delivery workflow as application code. Two of the most common choices are **Terraform** and **Pulumi**.
 
-## Genel Bakış
+## High-Level Comparison
 
-| Özellik | Terraform | Pulumi |
+| Feature | Terraform | Pulumi |
 |---------|-----------|--------|
-| **Dil** | HCL | TypeScript, Python, Go, C# |
-| **State** | Local veya remote backend | Pulumi Cloud veya self-hosted |
-| **Olgunluk** | Çok geniş ekosistem | Daha esnek programlama modeli |
-| **Provider sayısı** | Çok yüksek | Terraform provider'larını da kullanabilir |
-| **Öğrenme eğrisi** | HCL öğrenmek gerekir | Bildiğiniz dille ilerlersiniz |
+| **Language** | HCL | TypeScript, Python, Go, C# |
+| **State** | Local or remote backend | Pulumi Cloud or self-hosted |
+| **Maturity** | Very large ecosystem | More flexible programming model |
+| **Provider coverage** | Extremely broad | Can also use Terraform providers |
+| **Learning curve** | Requires learning HCL | Lets teams use familiar languages |
 
-## Terraform Örneği
+## Terraform Example
 
 ```hcl
 # main.tf
@@ -75,7 +75,7 @@ resource "aws_eks_cluster" "main" {
 }
 ```
 
-## Pulumi Örneği
+## Pulumi Example
 
 ```typescript
 import * as aws from "@pulumi/aws";
@@ -119,34 +119,34 @@ export const clusterName = cluster.name;
 export const kubeconfig = cluster.kubeconfig;
 ```
 
-## Hangi Senaryoda Hangisi?
+## When to Choose Which
 
-### Terraform daha uygundur, eğer:
+### Terraform is usually the better fit when:
 
-- Ekibiniz HCL ve modül ekosistemine alışkınsa
-- Çok sayıda provider ve olgun community desteği istiyorsanız
-- Daha standart ve deklaratif bir deneyim tercih ediyorsanız
+- Your team already works comfortably with HCL
+- You want a very mature ecosystem and broad provider coverage
+- You prefer a more standardized declarative workflow
 
-### Pulumi daha uygundur, eğer:
+### Pulumi is usually the better fit when:
 
-- Uygulama geliştiricilerinin bildiği dillerle ilerlemek istiyorsanız
-- Koşullar, döngüler ve daha karmaşık altyapı mantıkları gerekiyorsa
-- Test ve kod tekrarını daha güçlü kullanmak istiyorsanız
+- Your team wants to stay in a familiar programming language
+- Infrastructure logic needs loops, abstractions, or richer reuse
+- You want testing patterns that feel closer to application development
 
-## OpenTofu Notu
+## A Note on OpenTofu
 
-HashiCorp lisans değişikliğinden sonra ortaya çıkan **OpenTofu**, Terraform'a yakın bir deneyim sunan açık kaynak alternatifidir:
+After HashiCorp's licensing change, **OpenTofu** emerged as an open-source alternative with a Terraform-like experience:
 
 ```bash
-# OpenTofu kurulumu
+# Install OpenTofu
 brew install opentofu
 
-# Terraform ile benzer komutlar
+# Similar workflow
 tofu init
 tofu plan
 tofu apply
 ```
 
-## Sonuç
+## Conclusion
 
-Her iki araç da güçlüdür. Seçim, ekip yetkinliği, mevcut ekosistem ve ihtiyaç duyduğunuz esneklik seviyesine göre yapılmalıdır. Standartlaşma istiyorsanız Terraform, programlama dili gücünü altyapıya taşımak istiyorsanız Pulumi daha uygun olabilir.
+Both tools are strong. Terraform is often the safer default when you want standardization and ecosystem depth. Pulumi is compelling when infrastructure needs stronger language features and closer alignment with application engineering workflows.

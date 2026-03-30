@@ -1,0 +1,31 @@
+{% assign strings = site.data[site.active_lang].strings %}
+<div class="footer-meta">
+  <p class="language-switcher">
+    <strong>{{ strings.language_label }}:</strong>
+    {% for lang in site.languages %}
+      {% assign target = page.permalink_lang[lang] | default: page.url %}
+      {% if target == "/" %}
+        {% if lang == site.default_lang %}
+          {% capture lang_href %}{{ site.baseurl }}/{% endcapture %}
+        {% else %}
+          {% capture lang_href %}{{ site.baseurl }}/{{ lang }}/{% endcapture %}
+        {% endif %}
+      {% elsif lang == site.default_lang %}
+        {% capture lang_href %}{{ site.baseurl }}{{ target }}{% endcapture %}
+      {% else %}
+        {% capture lang_href %}{{ site.baseurl }}/{{ lang }}{{ target }}{% endcapture %}
+      {% endif %}
+      <a
+        {% if lang == site.active_lang %}class="is-active"{% endif %}
+        {% static_href %}href="{{ lang_href }}"{% endstatic_href %}
+      >
+        {% if lang == "tr" %}{{ strings.language_tr }}{% else %}{{ strings.language_en }}{% endif %}
+      </a>
+    {% endfor %}
+  </p>
+  <p class="llms-links">
+    <a href="{{ '/llms.txt' | relative_url }}">{{ strings.llms_label }}</a>
+    <span>·</span>
+    <a href="{{ '/llms-full.txt' | relative_url }}">{{ strings.llms_full_label }}</a>
+  </p>
+</div>

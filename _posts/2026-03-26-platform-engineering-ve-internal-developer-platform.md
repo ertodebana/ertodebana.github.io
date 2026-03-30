@@ -1,54 +1,58 @@
 ---
 title: "Platform Engineering ve Internal Developer Platform (IDP)"
 date: 2026-03-26 10:00:00 +0300
+lang: tr
+locale: tr-TR
+page_id: platform-engineering-idp
+permalink: /posts/platform-engineering-ve-internal-developer-platform/
 categories: [Platform Engineering]
 tags: [platform-engineering, idp, backstage, developer-experience, self-service]
-description: "Platform Engineering nedir, IDP nasil kurulur ve developer experience nasil iyilestirilir?"
+description: "Platform Engineering nedir, IDP nasıl kurulur ve developer experience nasıl iyileştirilir?"
 ---
 
 ## Platform Engineering Nedir?
 
-Platform Engineering, **developer'larin self-service olarak altyapi kaynaklarina erisebilecegi platformlari tasarlama ve insa etme** disiplinidir. Amac, cognitive load'u azaltmak ve developer productivity'yi artirmaktir.
+Platform Engineering, geliştiricilerin self-service olarak altyapı kaynaklarına erişebildiği platformları tasarlama ve işletme disiplinidir. Temel amaç, ekiplerin bilişsel yükünü azaltmak ve teslimat hızını artırmaktır.
 
-## DevOps vs Platform Engineering
+## DevOps ve Platform Engineering Arasındaki Fark
 
 | | DevOps | Platform Engineering |
 |---|--------|---------------------|
-| **Odak** | Kultur ve pratikler | Urun ve platform |
-| **Hedef** | Dev-Ops isbirligi | Self-service altyapi |
-| **Cikti** | Pipeline'lar, surec | Internal Developer Platform |
-| **Olcek** | Ekip bazli | Organizasyon bazli |
+| **Odak** | Kültür ve pratikler | Ürün ve platform |
+| **Hedef** | Dev ve Ops iş birliği | Self-service altyapı |
+| **Çıktı** | Pipeline'lar ve süreçler | Internal Developer Platform |
+| **Ölçek** | Takım düzeyi | Organizasyon düzeyi |
 
 ## Internal Developer Platform (IDP)
 
-Bir IDP, developer'larin ihtiyac duydugu tum araclari ve servisleri tek bir noktadan sundugu bir platformdur:
+Bir IDP, geliştiricilerin ihtiyaç duyduğu araçları tek bir deneyim altında toplayan platformdur:
 
-### Temel Bilesenler
+### Temel bileşenler
 
 ```
 +---------------------------------------------------+
-|              Developer Portal (UI)                 |
-|              (Backstage, Port, etc.)               |
+|              Developer Portal (UI)                |
+|              (Backstage, Port, vb.)               |
 +---------------------------------------------------+
-|                                                     |
-|  +-------------+  +-----------+  +---------------+ |
-|  | Service      |  | Infra     |  | Observability | |
-|  | Catalog      |  | Provisioning | | Dashboard  | |
-|  +-------------+  +-----------+  +---------------+ |
-|                                                     |
-|  +-------------+  +-----------+  +---------------+ |
-|  | CI/CD        |  | Security  |  | Cost          | |
-|  | Pipelines    |  | Scanning  |  | Management    | |
-|  +-------------+  +-----------+  +---------------+ |
-|                                                     |
+|                                                   |
+|  +-------------+  +-------------+  +------------+ |
+|  | Service     |  | Infra       |  | Visibility | |
+|  | Catalog     |  | Provision   |  | Dashboard  | |
+|  +-------------+  +-------------+  +------------+ |
+|                                                   |
+|  +-------------+  +-------------+  +------------+ |
+|  | CI/CD       |  | Security    |  | Cost       | |
+|  | Pipelines   |  | Controls    |  | Insights   | |
+|  +-------------+  +-------------+  +------------+ |
+|                                                   |
 +---------------------------------------------------+
-|           Kubernetes / Cloud Infrastructure         |
+|          Kubernetes / Cloud Infrastructure        |
 +---------------------------------------------------+
 ```
 
-## Backstage ile Developer Portal
+## Backstage ile Geliştirici Portalı
 
-Spotify tarafindan gelistirilen [Backstage](https://backstage.io), en populer IDP framework'udur:
+Spotify tarafından geliştirilen [Backstage](https://backstage.io), en yaygın IDP çatıları arasında yer alır:
 
 ```typescript
 // catalog-info.yaml
@@ -70,9 +74,9 @@ spec:
     - component:auth-service
 ```
 
-## Golden Path Templates
+## Golden Path Şablonları
 
-Platform ekipleri, developer'larin yeni servisler olusturmasi icin **golden path template'leri** sunar:
+Platform ekipleri, yeni servislerin güvenli ve standart biçimde açılabilmesi için golden path şablonları sağlar:
 
 ```yaml
 # template.yaml
@@ -81,13 +85,13 @@ kind: Template
 metadata:
   name: microservice-template
   title: Microservice Template
-  description: Yeni bir microservice olustur
+  description: Yeni bir microservice oluştur
 spec:
   parameters:
     - title: Servis Bilgileri
       properties:
         name:
-          title: Servis Adi
+          title: Servis Adı
           type: string
         owner:
           title: Sahip Ekip
@@ -95,20 +99,20 @@ spec:
           ui:field: OwnerPicker
   steps:
     - id: create-repo
-      name: Repository Olustur
+      name: Repository Oluştur
       action: publish:github
     - id: deploy
       name: ArgoCD'ye Kaydet
       action: argocd:create-app
 ```
 
-## Platform Engineering'e Baslarken
+## Nereden Başlamalı?
 
-1. **Developer ihtiyaclarini anlayin**: Anket ve gorusmeler yapin
-2. **MVP ile baslayin**: En cok ihtiyac duyulan self-service ozelliklerle
-3. **Iteratif gelistirin**: Feedback loop olusturun
-4. **Olcumleyin**: DORA metrics, developer satisfaction
+1. **Geliştirici ihtiyaçlarını anlayın**: Görüşme ve anketlerle darboğazları bulun.
+2. **MVP ile başlayın**: En çok tekrarlanan işleri self-service hâle getirin.
+3. **İteratif ilerleyin**: Platformu bir iç ürün gibi yönetin.
+4. **Ölçümleyin**: DORA metrikleri, teslimat süresi ve geliştirici memnuniyetini takip edin.
 
-## Sonuc
+## Sonuç
 
-Platform Engineering, DevOps'un dogal evrimidir. Organizasyonlar buyudukce, merkezi bir platform ekibi olusturmak ve developer'lara self-service yetenekler sunmak kacinilmaz hale gelir.
+Platform Engineering, DevOps'un yerine geçen değil, onu ölçekleyen bir yaklaşımdır. Organizasyon büyüdükçe ortak standartları, güvenliği ve geliştirici deneyimini merkezi bir platform üzerinden sunmak daha değerli hâle gelir.

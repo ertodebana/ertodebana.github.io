@@ -1,0 +1,19 @@
+# ertodebana Full Index
+
+> Complete bilingual content index for retrieval systems.
+
+## Turkish
+
+- [GitOps Nedir ve Neden Kullanmalıyız?](https://ertodebana.github.io/posts/gitops-nedir-ve-neden-kullanmaliyiz/)
+- [Platform Engineering ve Internal Developer Platform (IDP)](https://ertodebana.github.io/posts/platform-engineering-ve-internal-developer-platform/)
+- [LLM Operasyonları ve MLOps Pipeline Tasarımı](https://ertodebana.github.io/posts/llm-operasyonlari-ve-mlops-pipeline/)
+- [Kubernetes Security Best Practices](https://ertodebana.github.io/posts/kubernetes-security-best-practices/)
+- [Terraform vs Pulumi: IaC Araçlarının Karşılaştırması](https://ertodebana.github.io/posts/terraform-vs-pulumi-iac-karsilastirmasi/)
+
+## English
+
+- [What Is GitOps and Why Should You Use It?](https://ertodebana.github.io/en/posts/what-is-gitops-and-why-use-it/)
+- [Platform Engineering and Internal Developer Platforms](https://ertodebana.github.io/en/posts/platform-engineering-and-internal-developer-platforms/)
+- [LLM Operations and MLOps Pipeline Design](https://ertodebana.github.io/en/posts/llm-operations-and-mlops-pipeline-design/)
+- [Kubernetes Security Best Practices](https://ertodebana.github.io/en/posts/kubernetes-security-best-practices/)
+- [Terraform vs Pulumi: Comparing IaC Tools](https://ertodebana.github.io/en/posts/terraform-vs-pulumi-comparing-iac-tools/)
