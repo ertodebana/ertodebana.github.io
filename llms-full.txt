@@ -2,6 +2,19 @@
 
 > Complete bilingual content index for retrieval systems.
 
+## Core Pages
+
+- [Turkish homepage](https://ertodebana.github.io/)
+- [English homepage](https://ertodebana.github.io/en/)
+- [About in Turkish](https://ertodebana.github.io/hakkinda/)
+- [About in English](https://ertodebana.github.io/en/about/)
+- [Turkish archive](https://ertodebana.github.io/arsiv/)
+- [English archive](https://ertodebana.github.io/en/archive/)
+- [Turkish categories](https://ertodebana.github.io/kategoriler/)
+- [English categories](https://ertodebana.github.io/en/categories/)
+- [Turkish tags](https://ertodebana.github.io/etiketler/)
+- [English tags](https://ertodebana.github.io/en/tags/)
+
 ## Turkish
 
 - [GitOps Nedir ve Neden Kullanmalıyız?](https://ertodebana.github.io/posts/gitops-nedir-ve-neden-kullanmaliyiz/)

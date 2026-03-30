@@ -4,20 +4,20 @@
 
 ## Primary
 
-- [Türkçe ana sayfa](https://ertodebana.github.io/): Varsayılan dilde güncel yazılar.
+- [Turkish homepage](https://ertodebana.github.io/): Latest posts in the default language.
 - [English homepage](https://ertodebana.github.io/en/): English version of the site.
-- [Türkçe hakkında](https://ertodebana.github.io/hakkinda/): Blogun kapsamı ve odak alanları.
+- [About in Turkish](https://ertodebana.github.io/hakkinda/): Scope and focus of the blog.
 - [About in English](https://ertodebana.github.io/en/about/): Scope and focus of the blog.
 
 ## Navigation
 
-- [Türkçe arşiv](https://ertodebana.github.io/arsiv/)
+- [Turkish archive](https://ertodebana.github.io/arsiv/)
 - [English archive](https://ertodebana.github.io/en/archive/)
-- [Türkçe kategoriler](https://ertodebana.github.io/kategoriler/)
+- [Turkish categories](https://ertodebana.github.io/kategoriler/)
 - [English categories](https://ertodebana.github.io/en/categories/)
-- [Türkçe etiketler](https://ertodebana.github.io/etiketler/)
+- [Turkish tags](https://ertodebana.github.io/etiketler/)
 - [English tags](https://ertodebana.github.io/en/tags/)
 
-## Optional
+## Full Index
 
-- [LLMs full index](https://ertodebana.github.io/llms-full.txt): Full list of article URLs in both languages.
+- [LLMs full index](https://ertodebana.github.io/llms-full.txt): Complete article list in both languages.
