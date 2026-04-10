@@ -2,7 +2,7 @@
 layout: archive
 ---
 {%- assign locale = page.locale | default: layout.locale | default: site.locale %}
-{%- assign page_lang = page.lang | default: site.default_lang %}
+{%- assign page_lang = site.active_lang | default: page.lang | default: site.default_lang %}
 
 {{ content }}
 

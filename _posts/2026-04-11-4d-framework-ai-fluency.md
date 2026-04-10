@@ -1,6 +1,6 @@
 ---
 title: "The 4D Framework: A Compass for AI Fluency"
-date: 2026-04-11 10:00:00 +0300
+date: 2026-04-10 10:00:00 +0300
 lang: en
 locale: en-US
 page_id: 4d-framework-ai-fluency

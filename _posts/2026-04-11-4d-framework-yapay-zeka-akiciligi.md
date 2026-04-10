@@ -1,6 +1,6 @@
 ---
 title: "4D Framework: Yapay Zeka Akıcılığı İçin Bir Pusula"
-date: 2026-04-11 10:00:00 +0300
+date: 2026-04-10 10:00:00 +0300
 lang: tr
 locale: tr-TR
 page_id: 4d-framework-ai-fluency
